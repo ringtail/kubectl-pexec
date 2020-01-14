@@ -1,0 +1,2 @@
+## kubectl-pexec 
+`kubectl-pexec` is inspired by `pssh`. When you want to exec some commands in several pods of a same Deployment. It's very diffcult to do it in kubernetes with kubectl. But it is very common for ops-man🔧👱. 
