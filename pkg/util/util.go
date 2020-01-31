@@ -8,13 +8,14 @@ import (
 	"k8s.io/client-go/kubernetes/scheme"
 	restclient "k8s.io/client-go/rest"
 	"k8s.io/client-go/tools/remotecommand"
+	"fmt"
 )
 
 func Execute(client kubernetes.Interface, namespace *string, config *restclient.Config, podName string, command string, stdin io.Reader, stdout io.Writer, stderr io.Writer) error {
 	cmd := []string{
 		"sh",
 		"-c",
-		command,
+		fmt.Sprintf("echo -n [%s]&&%s", podName, command),
 	}
 
 	req := client.CoreV1().RESTClient().Post().Resource("pods").Name(podName).
