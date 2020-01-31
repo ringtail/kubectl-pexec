@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ace5ab4b-9580-4cf8-ac17-bfe4275a9fe5" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/pkg/util/util.go" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/exec.go" afterPath="$PROJECT_DIR$/pkg/cmd/pexec.go" />
-      <change beforePath="$PROJECT_DIR$/main.go" afterPath="$PROJECT_DIR$/cmd/kubectl-pexec.go" />
+      <change beforePath="$PROJECT_DIR$/Gopkg.lock" afterPath="$PROJECT_DIR$/Gopkg.lock" />
+      <change beforePath="$PROJECT_DIR$/pkg/cmd/pexec.go" afterPath="$PROJECT_DIR$/pkg/cmd/pexec.go" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -20,7 +20,7 @@
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="0">
+              <first_editor relative-caret-position="15">
                 <caret line="1" column="206" lean-forward="false" selection-start-line="1" selection-start-column="206" selection-end-line="1" selection-end-column="206" />
                 <folding />
               </first_editor>
@@ -29,44 +29,46 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="kubectl-pexec.go" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/cmd/kubectl-pexec.go">
+      <file leaf-file-name="Gopkg.toml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Gopkg.toml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="5" column="5" lean-forward="false" selection-start-line="5" selection-start-column="5" selection-end-line="5" selection-end-column="5" />
+            <state relative-caret-position="390">
+              <caret line="26" column="31" lean-forward="false" selection-start-line="26" selection-start-column="31" selection-end-line="26" selection-end-column="31" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Gopkg.toml" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Gopkg.toml">
+      <file leaf-file-name="pexec.go" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/pkg/cmd/pexec.go">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="285">
               <caret line="19" column="0" lean-forward="true" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="pexec.go" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pkg/cmd/pexec.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="3" column="5" lean-forward="false" selection-start-line="3" selection-start-column="5" selection-end-line="3" selection-end-column="5" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="register.go" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../../../k8s.io/api/apps/v1/register.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-38">
-              <caret line="18" column="7" lean-forward="true" selection-start-line="18" selection-start-column="7" selection-end-line="18" selection-end-column="7" />
               <folding>
-                <element signature="e#583#717#0" expanded="true" />
+                <element signature="e#13#384#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="util.go" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pkg/util/util.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="645">
+              <caret line="43" column="50" lean-forward="false" selection-start-line="43" selection-start-column="50" selection-end-line="43" selection-end-column="50" />
+              <folding>
+                <element signature="e#14#198#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="clientset.go" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/vendor/k8s.io/client-go/kubernetes/clientset.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="4395">
+              <caret line="333" column="5" lean-forward="false" selection-start-line="333" selection-start-column="5" selection-end-line="333" selection-end-column="5" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -83,6 +85,9 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>Deployment</find>
+      <find>LabelSelector</find>
+      <find>PExecOptions</find>
+      <find>NewPExecOptions</find>
     </findStrings>
   </component>
   <component name="GOROOT" path="/usr/local/Cellar/go/1.13.3/libexec" />
@@ -97,14 +102,17 @@
         <option value="$PROJECT_DIR$/exec.go" />
         <option value="$PROJECT_DIR$/cmd/main.go" />
         <option value="$PROJECT_DIR$/cmd/kubectl-pexec.go" />
-        <option value="$PROJECT_DIR$/pkg/cmd/pexec.go" />
         <option value="$PROJECT_DIR$/Gopkg.toml" />
+        <option value="$PROJECT_DIR$/pkg/cmd/util.go" />
+        <option value="$PROJECT_DIR$/pkg/util/util.go" />
+        <option value="$PROJECT_DIR$/vendor/k8s.io/client-go/tools/clientcmd/client_config.go" />
+        <option value="$PROJECT_DIR$/pkg/cmd/pexec.go" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="378" />
-    <option name="y" value="88" />
+    <option name="x" value="4" />
+    <option name="y" value="24" />
     <option name="width" value="1440" />
     <option name="height" value="827" />
   </component>
@@ -134,6 +142,70 @@
             </path>
             <path>
               <item name="kubectl-pexec" type="b2602c69:ProjectViewProjectNode" />
+              <item name="kubectl-pexec" type="462c0819:PsiDirectoryNode" />
+              <item name="pkg" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="kubectl-pexec" type="b2602c69:ProjectViewProjectNode" />
+              <item name="kubectl-pexec" type="462c0819:PsiDirectoryNode" />
+              <item name="pkg" type="462c0819:PsiDirectoryNode" />
+              <item name="cmd" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="kubectl-pexec" type="b2602c69:ProjectViewProjectNode" />
+              <item name="kubectl-pexec" type="462c0819:PsiDirectoryNode" />
+              <item name="pkg" type="462c0819:PsiDirectoryNode" />
+              <item name="util" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="kubectl-pexec" type="b2602c69:ProjectViewProjectNode" />
+              <item name="kubectl-pexec" type="462c0819:PsiDirectoryNode" />
+              <item name="vendor" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="kubectl-pexec" type="b2602c69:ProjectViewProjectNode" />
+              <item name="kubectl-pexec" type="462c0819:PsiDirectoryNode" />
+              <item name="vendor" type="462c0819:PsiDirectoryNode" />
+              <item name="github.com" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="kubectl-pexec" type="b2602c69:ProjectViewProjectNode" />
+              <item name="kubectl-pexec" type="462c0819:PsiDirectoryNode" />
+              <item name="vendor" type="462c0819:PsiDirectoryNode" />
+              <item name="github.com" type="462c0819:PsiDirectoryNode" />
+              <item name="spf13" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="kubectl-pexec" type="b2602c69:ProjectViewProjectNode" />
+              <item name="kubectl-pexec" type="462c0819:PsiDirectoryNode" />
+              <item name="vendor" type="462c0819:PsiDirectoryNode" />
+              <item name="github.com" type="462c0819:PsiDirectoryNode" />
+              <item name="spf13" type="462c0819:PsiDirectoryNode" />
+              <item name="pflag" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="kubectl-pexec" type="b2602c69:ProjectViewProjectNode" />
+              <item name="kubectl-pexec" type="462c0819:PsiDirectoryNode" />
+              <item name="vendor" type="462c0819:PsiDirectoryNode" />
+              <item name="k8s.io" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="kubectl-pexec" type="b2602c69:ProjectViewProjectNode" />
+              <item name="kubectl-pexec" type="462c0819:PsiDirectoryNode" />
+              <item name="vendor" type="462c0819:PsiDirectoryNode" />
+              <item name="k8s.io" type="462c0819:PsiDirectoryNode" />
+              <item name="client-go" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="kubectl-pexec" type="b2602c69:ProjectViewProjectNode" />
+              <item name="kubectl-pexec" type="462c0819:PsiDirectoryNode" />
+              <item name="vendor" type="462c0819:PsiDirectoryNode" />
+              <item name="k8s.io" type="462c0819:PsiDirectoryNode" />
+              <item name="client-go" type="462c0819:PsiDirectoryNode" />
+              <item name="kubernetes" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="kubectl-pexec" type="b2602c69:ProjectViewProjectNode" />
               <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
             </path>
           </expand>
@@ -148,9 +220,11 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="go.sdk.automatically.set" value="true" />
     <property name="DefaultGoTemplateProperty" value="Go File" />
+    <property name="go.vendoring.notification.had.been.shown" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/pkg/util" />
       <recent name="$PROJECT_DIR$/pkg/cmd" />
       <recent name="$PROJECT_DIR$/cmd" />
     </key>
@@ -172,7 +246,7 @@
       <module name="kubectl-pexec" />
       <working_directory value="$PROJECT_DIR$/" />
       <go_parameters value="-i" />
-      <parameters value="pexec deployment dingtalkbot-default cat /tmp" />
+      <parameters value="pexec deploy nginx-deployment-basic &quot;uname -a&quot; " />
       <kind value="FILE" />
       <filePath value="$PROJECT_DIR$/cmd/kubectl-pexec.go" />
       <package value="github.com/ringtail/kubectl-pexec" />
@@ -183,19 +257,19 @@
     <option name="remove_strategy" value="false" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="378" y="88" width="1440" height="827" extended-state="0" />
+    <frame x="4" y="24" width="1440" height="827" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24947146" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3989071" sideWeight="0.5024665" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329235" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329235" sideWeight="0.49753347" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3989071" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3989071" sideWeight="0.49753347" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -213,11 +287,15 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="DlvLineBreakpoint">
           <url>file://$PROJECT_DIR$/pkg/cmd/pexec.go</url>
-          <line>86</line>
+          <line>190</line>
           <properties />
+          <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="1" />
+      <breakpoints-dialog>
+        <breakpoints-dialog />
+      </breakpoints-dialog>
+      <option name="time" value="8" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -226,7 +304,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
           <caret line="15" column="30" lean-forward="false" selection-start-line="15" selection-start-column="30" selection-end-line="15" selection-end-column="30" />
-          <folding />
+          <folding>
+            <element signature="e#14#147#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -245,7 +325,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
           <caret line="10" column="66" lean-forward="false" selection-start-line="10" selection-start-column="66" selection-end-line="10" selection-end-column="66" />
-          <folding />
+          <folding>
+            <element signature="e#13#384#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -253,7 +335,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
           <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#14#147#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -272,7 +356,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
           <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#13#384#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -280,7 +366,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
           <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#14#147#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -299,18 +387,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
           <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="0">
-            <caret line="1" column="206" lean-forward="false" selection-start-line="1" selection-start-column="206" selection-end-line="1" selection-end-column="206" />
-            <folding />
-          </first_editor>
-          <second_editor />
+          <folding>
+            <element signature="e#13#384#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -318,16 +397,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="235">
           <caret line="619" column="5" lean-forward="false" selection-start-line="619" selection-start-column="5" selection-end-line="619" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../../k8s.io/api/apps/v1/register.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-38">
-          <caret line="18" column="7" lean-forward="true" selection-start-line="18" selection-start-column="7" selection-end-line="18" selection-end-column="7" />
-          <folding>
-            <element signature="e#583#717#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -339,27 +408,122 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Gopkg.toml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="26" column="31" lean-forward="false" selection-start-line="26" selection-start-column="31" selection-end-line="26" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/github.com/spf13/pflag/flag.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="840" column="18" lean-forward="false" selection-start-line="840" selection-start-column="18" selection-end-line="840" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/Cellar/go/1.13.3/libexec/src/runtime/panic.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1525">
+          <caret line="846" column="0" lean-forward="false" selection-start-line="846" selection-start-column="0" selection-end-line="846" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/k8s.io/client-go/kubernetes/typed/apps/v1/deployment.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="20" column="7" lean-forward="false" selection-start-line="20" selection-start-column="7" selection-end-line="20" selection-end-column="7" />
+          <folding>
+            <element signature="e#625#912#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../k8s.io/api/apps/v1/register.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-38">
+          <caret line="18" column="7" lean-forward="false" selection-start-line="18" selection-start-column="7" selection-end-line="18" selection-end-column="7" />
+          <folding>
+            <element signature="e#583#717#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../GoogleCloudPlatform/spark-on-k8s-operator/vendor/k8s.io/kubernetes/test/e2e/framework/rc_util.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="622">
+          <caret line="225" column="0" lean-forward="true" selection-start-line="225" selection-start-column="0" selection-end-line="225" selection-end-column="0" />
+          <folding>
+            <element signature="e#590#990#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/cmd/kubectl-pexec.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="5" lean-forward="false" selection-start-line="5" selection-start-column="5" selection-end-line="5" selection-end-column="5" />
+        <state relative-caret-position="300">
+          <caret line="20" column="0" lean-forward="true" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+          <folding>
+            <element signature="e#14#147#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="15">
+            <caret line="1" column="206" lean-forward="false" selection-start-line="1" selection-start-column="206" selection-end-line="1" selection-end-column="206" />
+            <folding />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/k8s.io/client-go/tools/remotecommand/remotecommand.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="49" column="29" lean-forward="true" selection-start-line="49" selection-start-column="29" selection-end-line="49" selection-end-column="29" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/k8s.io/client-go/kubernetes/clientset.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4395">
+          <caret line="333" column="5" lean-forward="false" selection-start-line="333" selection-start-column="5" selection-end-line="333" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/k8s.io/client-go/tools/clientcmd/client_config.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="269">
+          <caret line="546" column="5" lean-forward="false" selection-start-line="546" selection-start-column="5" selection-end-line="546" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pkg/util/util.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="645">
+          <caret line="43" column="50" lean-forward="false" selection-start-line="43" selection-start-column="50" selection-end-line="43" selection-end-column="50" />
+          <folding>
+            <element signature="e#14#198#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/pkg/cmd/pexec.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="5" lean-forward="false" selection-start-line="3" selection-start-column="5" selection-end-line="3" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Gopkg.toml">
-      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="285">
           <caret line="19" column="0" lean-forward="true" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#13#384#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

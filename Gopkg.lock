@@ -26,6 +26,17 @@
   version = "v1.1.1"
 
 [[projects]]
+  branch = "master"
+  digest = "1:ecdc8e0fe3bc7d549af1c9c36acf3820523b707d6c071b6d0c3860882c6f7b42"
+  name = "github.com/docker/spdystream"
+  packages = [
+    ".",
+    "spdy",
+  ]
+  pruneopts = "UT"
+  revision = "6480d4af844c189cf5dd913db24ddd339d3a4f85"
+
+[[projects]]
   digest = "1:e15b0065da1011473634ffa0dda17731ea1d5f6fb8bb87905216d95fa29eaec0"
   name = "github.com/emicklei/go-restful"
   packages = [
@@ -403,7 +414,7 @@
   version = "kubernetes-1.14.1"
 
 [[projects]]
-  digest = "1:eb3d6acc18c6d7ffc0148861469afc873a3e9f72503e2844a7843a7b60c933f2"
+  digest = "1:04a6208879b12ba7ff44fef680d8042b2d7bde178f54247ab609cd7777cf54ca"
   name = "k8s.io/apimachinery"
   packages = [
     "pkg/api/equality",
@@ -433,11 +444,14 @@
     "pkg/util/clock",
     "pkg/util/errors",
     "pkg/util/framer",
+    "pkg/util/httpstream",
+    "pkg/util/httpstream/spdy",
     "pkg/util/intstr",
     "pkg/util/json",
     "pkg/util/mergepatch",
     "pkg/util/naming",
     "pkg/util/net",
+    "pkg/util/remotecommand",
     "pkg/util/runtime",
     "pkg/util/sets",
     "pkg/util/strategicpatch",
@@ -447,6 +461,7 @@
     "pkg/version",
     "pkg/watch",
     "third_party/forked/golang/json",
+    "third_party/forked/golang/netutil",
     "third_party/forked/golang/reflect",
   ]
   pruneopts = "UT"
@@ -475,7 +490,7 @@
   version = "kubernetes-1.14.8"
 
 [[projects]]
-  digest = "1:7c01dd704f8223ca3e79e102c0a75a880842823a3e3342122cc7b9c09a0bee29"
+  digest = "1:c23227409c3b315a7902031cf0118e50b1830d3a586639040838e459a3ffcc46"
   name = "k8s.io/client-go"
   packages = [
     "discovery",
@@ -534,9 +549,12 @@
     "tools/clientcmd/api/v1",
     "tools/metrics",
     "tools/reference",
+    "tools/remotecommand",
     "transport",
+    "transport/spdy",
     "util/cert",
     "util/connrotation",
+    "util/exec",
     "util/flowcontrol",
     "util/homedir",
     "util/jsonpath",
@@ -618,9 +636,15 @@
   input-imports = [
     "github.com/spf13/cobra",
     "github.com/spf13/pflag",
+    "k8s.io/api/core/v1",
+    "k8s.io/apimachinery/pkg/apis/meta/v1",
+    "k8s.io/apimachinery/pkg/labels",
     "k8s.io/cli-runtime/pkg/genericclioptions",
     "k8s.io/client-go/kubernetes",
+    "k8s.io/client-go/kubernetes/scheme",
+    "k8s.io/client-go/rest",
     "k8s.io/client-go/tools/clientcmd",
+    "k8s.io/client-go/tools/remotecommand",
   ]
   solver-name = "gps-cdcl"
   solver-version = 1
