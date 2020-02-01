@@ -1,6 +1,6 @@
 # kubectl-pexec 
 [![License](https://img.shields.io/badge/license-Apache%202-4EB1BA.svg)](https://www.apache.org/licenses/LICENSE-2.0.html)
-[![Build Status](https://travis-ci.org/ringtail/kubectl-pexec.svg?branch=master)](https://travis-ci.org/ringtail/pexec)     
+[![Build Status](https://travis-ci.org/ringtail/kubectl-pexec.svg?branch=master)](https://travis-ci.org/ringtail/kubectl-pexec)     
 
 `kubectl-pexec` is inspired by `pssh`. When you want to exec some commands in several pods of a same Deployment. It's very diffcult to do it in kubernetes with kubectl. But it is very common for ops-man🔧👱. 
 
