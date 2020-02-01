@@ -59,22 +59,28 @@ type PExecOptions struct {
 	restConfig   *rest.Config
 	args         []string
 	workloadType string
+	offset       int
 	genericclioptions.IOStreams
 }
 
 func (peo *PExecOptions) Complete(c *cobra.Command, args []string) (err error) {
 	peo.args = args
+	for index, _ := range args {
+		if args[index] == "pexec" {
+			peo.offset = index + 1
+		}
+	}
 	return nil
 }
 
 func (peo *PExecOptions) Validate() (err error) {
 	args := peo.args
 
-	if len(args) < 4 {
+	if len(args) < 3+peo.offset {
 		return errors.New("NoneValidArgs")
 	}
 
-	workloadType := args[1]
+	workloadType := args[0+peo.offset]
 
 	switch workloadType {
 	case "deployment", "deploy":
@@ -138,7 +144,7 @@ func (peo *PExecOptions) Run() (err error) {
 }
 
 func (peo *PExecOptions) GetPods(clientSet *kubernetes.Clientset, namespace *string) (pods []v1.Pod, err error) {
-	workloadName := peo.args[2]
+	workloadName := peo.args[1+peo.offset]
 
 	matchLabels := make(map[string]string)
 	switch peo.workloadType {
@@ -189,7 +195,7 @@ func (peo *PExecOptions) Pexec(clientSet *kubernetes.Clientset, namespace *strin
 			if err != nil {
 				panic(err)
 			}
-			util.Execute(clientSet, namespace, peo.restConfig, pod.Name, strings.Join(peo.args[3:], " "), peo.IOStreams.In, peo.IOStreams.Out, peo.IOStreams.ErrOut)
+			util.Execute(clientSet, namespace, peo.restConfig, pod.Name, strings.Join(peo.args[2+peo.offset:], " "), peo.IOStreams.In, peo.IOStreams.Out, peo.IOStreams.ErrOut)
 			wg.Done()
 		}(&pods[index], clientSet, wg)
 	}
@@ -203,5 +209,6 @@ func NewPExecOptions(streams genericclioptions.IOStreams) *PExecOptions {
 	return &PExecOptions{
 		configFlags: genericclioptions.NewConfigFlags(true),
 		IOStreams:   streams,
+		offset:      0,
 	}
 }
