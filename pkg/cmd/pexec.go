@@ -1,21 +1,21 @@
 package cmd
 
 import (
-	"github.com/spf13/cobra"
-	"k8s.io/cli-runtime/pkg/genericclioptions"
-	"fmt"
 	"errors"
-	"k8s.io/client-go/kubernetes"
-	"k8s.io/client-go/tools/clientcmd"
-	"k8s.io/apimachinery/pkg/labels"
+	"fmt"
+	"github.com/ringtail/kubectl-pexec/pkg/util"
+	"github.com/spf13/cobra"
 	"k8s.io/api/core/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
-	"sync"
-	"github.com/ringtail/kubectl-pexec/pkg/util"
+	"k8s.io/apimachinery/pkg/labels"
+	"k8s.io/cli-runtime/pkg/genericclioptions"
+	"k8s.io/client-go/kubernetes"
 	"k8s.io/client-go/rest"
-	"strings"
+	"k8s.io/client-go/tools/clientcmd"
 	"os"
 	"path"
+	"strings"
+	"sync"
 	"time"
 )
 

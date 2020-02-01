@@ -3,12 +3,12 @@ package util
 import (
 	"io"
 
+	"fmt"
 	"k8s.io/api/core/v1"
 	"k8s.io/client-go/kubernetes"
 	"k8s.io/client-go/kubernetes/scheme"
 	restclient "k8s.io/client-go/rest"
 	"k8s.io/client-go/tools/remotecommand"
-	"fmt"
 )
 
 func Execute(client kubernetes.Interface, namespace *string, config *restclient.Config, podName string, command string, stdin io.Reader, stdout io.Writer, stderr io.Writer) error {

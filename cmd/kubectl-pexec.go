@@ -5,8 +5,8 @@ import (
 
 	"github.com/spf13/pflag"
 
-	"k8s.io/cli-runtime/pkg/genericclioptions"
 	"github.com/ringtail/kubectl-pexec/pkg/cmd"
+	"k8s.io/cli-runtime/pkg/genericclioptions"
 )
 
 func main() {
