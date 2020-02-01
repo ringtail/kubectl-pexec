@@ -128,7 +128,7 @@ You can try to wrap the command with a colon. some special characters may break 
 * Why the stdout is mixed and out-of-order?
 `kubectl-pexec` bond the stdout to multi remote stdout. So if the stream is continuous. The stdout may be out-of-order.
 
-* Why I can't build kubectl-pexec? 
+* Why I can't build kubectl-pexec?      
 Pls update golang version upper than 1.12 and try again.
 
 ## License
