@@ -15,7 +15,7 @@ func Execute(client kubernetes.Interface, namespace *string, config *restclient.
 	cmd := []string{
 		"sh",
 		"-c",
-		fmt.Sprintf("echo -n [%s]&&%s", podName, command),
+		fmt.Sprintf("echo -n \"[%s] \"&&%s", podName, command),
 	}
 
 	req := client.CoreV1().RESTClient().Post().Resource("pods").Name(podName).

@@ -16,6 +16,7 @@ import (
 	"strings"
 	"os"
 	"path"
+	"time"
 )
 
 const (
@@ -180,7 +181,7 @@ func (peo *PExecOptions) GetPods(clientSet *kubernetes.Clientset, namespace *str
 }
 
 func (peo *PExecOptions) Pexec(clientSet *kubernetes.Clientset, namespace *string, pods []v1.Pod) (err error) {
-
+	now := time.Now()
 	wg := &sync.WaitGroup{}
 	for index, _ := range pods {
 		wg.Add(1)
@@ -193,6 +194,8 @@ func (peo *PExecOptions) Pexec(clientSet *kubernetes.Clientset, namespace *strin
 		}(&pods[index], clientSet, wg)
 	}
 	wg.Wait()
+	summary := fmt.Sprintf("All pods execution done in %.03fs\n", time.Now().Sub(now).Seconds())
+	fmt.Printf("%c[1;0;32m%s%c[0m\n\n", 0x1B, summary, 0x1B)
 	return nil
 }
 
