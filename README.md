@@ -1,9 +1,9 @@
-## kubectl-pexec 
+# kubectl-pexec 
 `kubectl-pexec` is inspired by `pssh`. When you want to exec some commands in several pods of a same Deployment. It's very diffcult to do it in kubernetes with kubectl. But it is very common for ops-man🔧👱. 
 
 
 
-### Usage 
+## Usage 
 ```sh
 # assumes you have a working KUBECONFIG
 $ GO111MODULE="on" go build cmd/kubectl-pexec.go
@@ -93,7 +93,7 @@ http {
 All pods execution done in 0.547s
 ```
 
-#### debug or tuning problem in pod 
+#### debug or tuning in pod 
 ```sh 
 $ kubectl pexec deploy nginx-deployment-basic "netstat -apn"
 
@@ -114,18 +114,18 @@ unix  3      [ ]         STREAM     CONNECTED     251539136 1/nginx: master pro
 All pods execution done in 0.547s
 ```
 
-### Use Cases 
+## Use Cases 
 * Batch commands execution 
 * Problem diagnose 
 * Performance tuning 
 * Configuration alteration 
 
-### Frequently asked question
+## Frequently asked question
 * Why my command can not be executed?   
 You can try to wrap the command with a colon. some special characters may break the command parser.
                                              
 * Why the stdout is mixed and out-of-order?
 `kubectl-pexec` bond the stdout to multi remote stdout. So if the stream is continuous. The stdout may be out-of-order.
 
-### License
+## License
 This software is released under the Apache 2.0 license.
