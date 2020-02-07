@@ -11,11 +11,21 @@ import (
 	"k8s.io/client-go/tools/remotecommand"
 )
 
-func Execute(client kubernetes.Interface, namespace *string, config *restclient.Config, podName string, command string, stdin io.Reader, stdout io.Writer, stderr io.Writer) error {
-	cmd := []string{
-		"sh",
-		"-c",
-		fmt.Sprintf("echo -n \"[%s] \"&&%s", podName, command),
+func Execute(client kubernetes.Interface, namespace *string, config *restclient.Config, ignoreHostname bool, podName string, command string, stdin io.Reader, stdout io.Writer, stderr io.Writer) error {
+
+	var cmd []string
+	if !ignoreHostname {
+		cmd = []string{
+			"sh",
+			"-c",
+			fmt.Sprintf("echo -n \"[%s] \"&&%s", podName, command),
+		}
+	} else {
+		cmd = []string{
+			"sh",
+			"-c",
+			command,
+		}
 	}
 
 	req := client.CoreV1().RESTClient().Post().Resource("pods").Name(podName).

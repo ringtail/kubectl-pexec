@@ -49,18 +49,19 @@ func NewPExecCommand(streams genericclioptions.IOStreams) *cobra.Command {
 		},
 	}
 
+	cmd.Flags().BoolVar(&o.ignoreHostname, "ignore-hostname", o.ignoreHostname, "ignore hostname in output")
 	o.configFlags.AddFlags(cmd.Flags())
-
 	return cmd
 }
 
 type PExecOptions struct {
-	configFlags  *genericclioptions.ConfigFlags
-	restConfig   *rest.Config
-	args         []string
-	workloadType string
-	offset       int
+	configFlags    *genericclioptions.ConfigFlags
+	restConfig     *rest.Config
+	args           []string
+	workloadType   string
+	offset         int
 	genericclioptions.IOStreams
+	ignoreHostname bool
 }
 
 func (peo *PExecOptions) Complete(c *cobra.Command, args []string) (err error) {
@@ -195,7 +196,7 @@ func (peo *PExecOptions) Pexec(clientSet *kubernetes.Clientset, namespace *strin
 			if err != nil {
 				panic(err)
 			}
-			util.Execute(clientSet, namespace, peo.restConfig, pod.Name, strings.Join(peo.args[2+peo.offset:], " "), peo.IOStreams.In, peo.IOStreams.Out, peo.IOStreams.ErrOut)
+			util.Execute(clientSet, namespace, peo.restConfig, peo.ignoreHostname, pod.Name, strings.Join(peo.args[2+peo.offset:], " "), peo.IOStreams.In, peo.IOStreams.Out, peo.IOStreams.ErrOut)
 			wg.Done()
 		}(&pods[index], clientSet, wg)
 	}
