@@ -1,6 +1,7 @@
 # kubectl-pexec 
 [![License](https://img.shields.io/badge/license-Apache%202-4EB1BA.svg)](https://www.apache.org/licenses/LICENSE-2.0.html)
-[![Build Status](https://travis-ci.org/ringtail/kubectl-pexec.svg?branch=master)](https://travis-ci.org/ringtail/pexec)
+[![Build Status](https://travis-ci.org/ringtail/kubectl-pexec.svg?branch=master)](https://travis-ci.org/ringtail/kubectl-pexec)     
+
 `kubectl-pexec` is inspired by `pssh`. When you want to exec some commands in several pods of a same Deployment. It's very diffcult to do it in kubernetes with kubectl. But it is very common for ops-man🔧👱. 
 
 ## Usage 
@@ -126,6 +127,9 @@ You can try to wrap the command with a colon. some special characters may break 
                                              
 * Why the stdout is mixed and out-of-order?
 `kubectl-pexec` bond the stdout to multi remote stdout. So if the stream is continuous. The stdout may be out-of-order.
+
+* Why I can't build kubectl-pexec?      
+Pls update golang version upper than 1.12 and try again.
 
 ## License
 This software is released under the Apache 2.0 license.
