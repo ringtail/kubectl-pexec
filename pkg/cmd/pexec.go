@@ -50,18 +50,20 @@ func NewPExecCommand(streams genericclioptions.IOStreams) *cobra.Command {
 	}
 
 	cmd.Flags().BoolVar(&o.ignoreHostname, "ignore-hostname", o.ignoreHostname, "ignore hostname in output")
+	cmd.Flags().StringVarP(&o.container, "container-name", "c", o.container, "indicate container name when pod has over two containers")
 	o.configFlags.AddFlags(cmd.Flags())
 	return cmd
 }
 
 type PExecOptions struct {
-	configFlags    *genericclioptions.ConfigFlags
-	restConfig     *rest.Config
-	args           []string
-	workloadType   string
-	offset         int
+	configFlags  *genericclioptions.ConfigFlags
+	restConfig   *rest.Config
+	args         []string
+	workloadType string
+	offset       int
 	genericclioptions.IOStreams
 	ignoreHostname bool
+	container      string
 }
 
 func (peo *PExecOptions) Complete(c *cobra.Command, args []string) (err error) {
@@ -196,7 +198,7 @@ func (peo *PExecOptions) Pexec(clientSet *kubernetes.Clientset, namespace *strin
 			if err != nil {
 				panic(err)
 			}
-			util.Execute(clientSet, namespace, peo.restConfig, peo.ignoreHostname, pod.Name, strings.Join(peo.args[2+peo.offset:], " "), peo.IOStreams.In, peo.IOStreams.Out, peo.IOStreams.ErrOut)
+			util.Execute(clientSet, namespace, peo.restConfig, peo.ignoreHostname, pod.Name, peo.container, strings.Join(peo.args[2+peo.offset:], " "), peo.IOStreams.In, peo.IOStreams.Out, peo.IOStreams.ErrOut)
 			wg.Done()
 		}(&pods[index], clientSet, wg)
 	}

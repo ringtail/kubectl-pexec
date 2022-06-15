@@ -11,7 +11,7 @@ import (
 	"k8s.io/client-go/tools/remotecommand"
 )
 
-func Execute(client kubernetes.Interface, namespace *string, config *restclient.Config, ignoreHostname bool, podName string, command string, stdin io.Reader, stdout io.Writer, stderr io.Writer) error {
+func Execute(client kubernetes.Interface, namespace *string, config *restclient.Config, ignoreHostname bool, podName string, containerName string, command string, stdin io.Reader, stdout io.Writer, stderr io.Writer) error {
 
 	var cmd []string
 	if !ignoreHostname {
@@ -36,6 +36,9 @@ func Execute(client kubernetes.Interface, namespace *string, config *restclient.
 		Stdout:  true,
 		Stderr:  true,
 		TTY:     true,
+	}
+	if containerName != "" {
+		option.Container = containerName
 	}
 
 	if stdin == nil {
