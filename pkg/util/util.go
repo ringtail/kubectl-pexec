@@ -1,7 +1,9 @@
 package util
 
 import (
+	"errors"
 	"io"
+	"strings"
 
 	"fmt"
 	"k8s.io/api/core/v1"
@@ -66,4 +68,17 @@ func Execute(client kubernetes.Interface, namespace *string, config *restclient.
 	}
 
 	return nil
+}
+
+func ParseLabels(selectLabels string) (map[string]string, error) {
+	labels := make(map[string]string)
+	sliceLabels := strings.Split(selectLabels, ",")
+	for _, label := range sliceLabels {
+		kv := strings.Split(label, "=")
+		if len(kv) != 2 {
+			return nil, errors.New("invalid labels format")
+		}
+		labels[kv[0]] = kv[1]
+	}
+	return labels, nil
 }
