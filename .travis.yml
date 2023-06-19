@@ -13,7 +13,6 @@ language: go
 # responsibility to keep their compiler up to date.
 go:
   - 1.12.x
-  - 1.11.x
 
 # Only clone the most recent commit.
 git:
