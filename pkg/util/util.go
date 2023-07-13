@@ -1,7 +1,9 @@
 package util
 
 import (
+	"errors"
 	"io"
+	"strings"
 
 	"fmt"
 	"k8s.io/api/core/v1"
@@ -11,7 +13,7 @@ import (
 	"k8s.io/client-go/tools/remotecommand"
 )
 
-func Execute(client kubernetes.Interface, namespace *string, config *restclient.Config, ignoreHostname bool, podName string, command string, stdin io.Reader, stdout io.Writer, stderr io.Writer) error {
+func Execute(client kubernetes.Interface, namespace *string, config *restclient.Config, ignoreHostname bool, podName string, containerName string, command string, stdin io.Reader, stdout io.Writer, stderr io.Writer) error {
 
 	var cmd []string
 	if !ignoreHostname {
@@ -36,6 +38,9 @@ func Execute(client kubernetes.Interface, namespace *string, config *restclient.
 		Stdout:  true,
 		Stderr:  true,
 		TTY:     true,
+	}
+	if containerName != "" {
+		option.Container = containerName
 	}
 
 	if stdin == nil {
@@ -63,4 +68,17 @@ func Execute(client kubernetes.Interface, namespace *string, config *restclient.
 	}
 
 	return nil
+}
+
+func ParseLabels(selectLabels string) (map[string]string, error) {
+	labels := make(map[string]string)
+	sliceLabels := strings.Split(selectLabels, ",")
+	for _, label := range sliceLabels {
+		kv := strings.Split(label, "=")
+		if len(kv) != 2 {
+			return nil, errors.New("invalid labels format")
+		}
+		labels[kv[0]] = kv[1]
+	}
+	return labels, nil
 }

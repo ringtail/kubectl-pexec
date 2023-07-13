@@ -50,18 +50,22 @@ func NewPExecCommand(streams genericclioptions.IOStreams) *cobra.Command {
 	}
 
 	cmd.Flags().BoolVar(&o.ignoreHostname, "ignore-hostname", o.ignoreHostname, "ignore hostname in output")
+	cmd.Flags().StringVarP(&o.container, "container-name", "c", o.container, "indicate container name when pod has over two containers")
+	cmd.Flags().StringVarP(&o.selectLabels, "labels", "l", o.selectLabels, "filter pods based on labels, format: key1=value1,key2=value2...")
 	o.configFlags.AddFlags(cmd.Flags())
 	return cmd
 }
 
 type PExecOptions struct {
-	configFlags    *genericclioptions.ConfigFlags
-	restConfig     *rest.Config
-	args           []string
-	workloadType   string
-	offset         int
+	configFlags  *genericclioptions.ConfigFlags
+	restConfig   *rest.Config
+	args         []string
+	workloadType string
+	offset       int
 	genericclioptions.IOStreams
 	ignoreHostname bool
+	container      string
+	selectLabels   string
 }
 
 func (peo *PExecOptions) Complete(c *cobra.Command, args []string) (err error) {
@@ -77,12 +81,9 @@ func (peo *PExecOptions) Complete(c *cobra.Command, args []string) (err error) {
 func (peo *PExecOptions) Validate() (err error) {
 	args := peo.args
 
-	if len(args) < 3+peo.offset {
-		return errors.New("NoneValidArgs")
-	}
-
 	workloadType := args[0+peo.offset]
 
+	switcher := 0
 	switch workloadType {
 	case "deployment", "deploy":
 		// change workloadType to Deployment
@@ -93,9 +94,20 @@ func (peo *PExecOptions) Validate() (err error) {
 	case "daemonset", "ds":
 		// change workloadType to DaemonSet
 		peo.workloadType = "DaemonSet"
+	case "pod", "po":
+		peo.workloadType = "Pod"
+		switcher--
+		if peo.selectLabels == "" {
+			return errors.New("Pod type need flag --labels. Please check -h. ")
+		}
 	default:
 		return errors.New("InvalidWorkloadType")
 	}
+
+	if len(args) < 3+peo.offset+switcher {
+		return errors.New("NoneValidArgs")
+	}
+
 	return nil
 }
 
@@ -170,6 +182,13 @@ func (peo *PExecOptions) GetPods(clientSet *kubernetes.Clientset, namespace *str
 			return pods, err
 		}
 		matchLabels = daemonSet.GetLabels()
+	case "Pod":
+		if peo.selectLabels != "" {
+			matchLabels, err = util.ParseLabels(peo.selectLabels)
+			if err != nil {
+				return nil, err
+			}
+		}
 	default:
 		//
 		return pods, errors.New("UnknownWorkloadType")
@@ -190,18 +209,32 @@ func (peo *PExecOptions) GetPods(clientSet *kubernetes.Clientset, namespace *str
 func (peo *PExecOptions) Pexec(clientSet *kubernetes.Clientset, namespace *string, pods []v1.Pod) (err error) {
 	now := time.Now()
 	wg := &sync.WaitGroup{}
+	totalNum := len(pods)
+	failNum := 0
+	var failPodList []string
+	var lock sync.Mutex
 	for index, _ := range pods {
 		wg.Add(1)
 		go func(pod *v1.Pod, clientSet *kubernetes.Clientset, wg *sync.WaitGroup) {
 			if err != nil {
 				panic(err)
 			}
-			util.Execute(clientSet, namespace, peo.restConfig, peo.ignoreHostname, pod.Name, strings.Join(peo.args[2+peo.offset:], " "), peo.IOStreams.In, peo.IOStreams.Out, peo.IOStreams.ErrOut)
+			commandOffset := 2 + peo.offset
+			if peo.workloadType == "Pod" {
+				commandOffset--
+			}
+			err = util.Execute(clientSet, namespace, peo.restConfig, peo.ignoreHostname, pod.Name, peo.container, strings.Join(peo.args[commandOffset:], " "), peo.IOStreams.In, peo.IOStreams.Out, peo.IOStreams.ErrOut)
+			if err != nil {
+				failNum++
+				lock.Lock()
+				failPodList = append(failPodList, pod.Name)
+				lock.Unlock()
+			}
 			wg.Done()
 		}(&pods[index], clientSet, wg)
 	}
 	wg.Wait()
-	summary := fmt.Sprintf("All pods execution done in %.03fs\n", time.Now().Sub(now).Seconds())
+	summary := fmt.Sprintf("All pods execution done in %.03fs. Success: %d, Fail: %d, Failed pods: %v \n", time.Now().Sub(now).Seconds(), totalNum-failNum, failNum, failPodList)
 	fmt.Printf("%c[1;0;32m%s%c[0m\n\n", 0x1B, summary, 0x1B)
 	return nil
 }
